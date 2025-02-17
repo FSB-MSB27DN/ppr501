@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block content %}
+<a class="button is-primary is-pulled-right" href="/flight/add"
+  >Add New Flight</a
+>
+<br />
+<br />
+<div class="table-container">
+  <table
+    class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+  >
+    <thead>
+      <tr>
+        <th class="is-info">Id</th>
+        <th class="is-info">Flight Number</th>
+        <th class="is-info">Aircraft</th>
+        <th class="is-info">Date</th>
+        <th class="is-info">From Airport</th>
+        <th class="is-info">To Airport</th>
+        <th class="is-info">Scheduled Time of Departure</th>
+        <th class="is-info">Scheduled Time of Arrival</th>
+        <th class="is-info">Actual Time of Departure</th>
+        <th class="is-info">Actual Time of Arrival</th>
+        <th class="is-info">Status</th>
+        <th class="is-info">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for flight in flights %}
+      <tr>
+        <td>{{ flight.flight_id }}</td>
+        <td>
+          <a href="/flight/edit/{{ flight.flight_id }}"
+            >{{ flight.flight_number }}</a
+          >
+        </td>
+        <td>{{ flight.aircraft.name }}</td>
+        <td>{{ flight.date.strftime('%Y-%m-%d') }}</td>
+        <td>{{ flight.from_airport }}</td>
+        <td>{{ flight.to_airport }}</td>
+        <td>{{ flight.scheduled_time_of_departure }}</td>
+        <td>{{ flight.scheduled_time_of_arrival }}</td>
+        <td>{{ flight.actual_time_of_departure }}</td>
+        <td>{{ flight.actual_time_of_arrival }}</td>
+        <td>{{ flight.status }}</td>
+        <td>
+          <a
+            class="button is-primary"
+            href="/flight/edit/{{ flight.flight_id }}"
+            >Edit</a
+          >
+          <a
+            class="button is-danger"
+            href="/flight/delete/{{ flight.flight_id }}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% block header %} Statictis {% endblock %} {% block
+content %}
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+  <thead>
+    <tr>
+      <th class="is-info">Airline Name</th>
+      <th class="is-info">Total Aircrafts</th>
+      <th class="is-info">Total Flights</th>
+      <th class="is-info">Total On Time Flights</th>
+      <th class="is-info">Total Delayed Flights</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data_airline in data %}
+    <tr>
+      <td>{{ data_airline.airline_name }}</td>
+      <td>{{ data_airline.total_aircrafts }}</td>
+      <td>{{ data_airline.total_flights }}</td>
+      <td>{{ data_airline.total_on_time_flights }}</td>
+      <td>{{ data_airline.total_delayed_flights }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td style="font-weight: bold">Total</td>
+      <td style="font-weight: bold">{{ statistics.total_aircrafts }}</td>
+      <td style="font-weight: bold">{{ statistics.total_flights }}</td>
+      <td style="font-weight: bold">{{ statistics.total_on_time_flights }}</td>
+      <td style="font-weight: bold">{{ statistics.total_delayed_flights }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

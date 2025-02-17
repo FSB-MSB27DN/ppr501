@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% block content %}
+<form method="post">
+  {{ form.hidden_tag() }}
+
+  <div class="field">
+    <label class="label"> {{ form.flight_id.label }} </label>
+    <div class="control is-disabled">
+      {{ form.flight_id(class="input", disabled=True) }}
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">
+      {{ form.flight_number.label }}
+      <i class="fas fa-asterisk has-text-danger"></i>
+    </label>
+    <div class="control has-icons-right">
+      {{ form.flight_number(class="input") }}
+    </div>
+    {% for error in form.flight_number.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+  </div>
+
+  <!-- aircraft -->
+  <div class="field">
+    <label class="label">
+      {{ form.aircraft_id.label }}
+      <i class="fas fa-asterisk has-text-danger"></i>
+    </label>
+    <div class="control has-icons-right">
+      {{ form.aircraft_id(class="input") }}
+    </div>
+    {% for error in form.aircraft_id.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+  </div>
+  <!-- date -->
+  <div class="field">
+    <label class="label"> {{ form.date.label }} </label>
+    <div class="control has-icons-right">{{ form.date(class="input") }}</div>
+  </div>
+  <!-- from_airport -->
+  <div class="field">
+    <label class="label"> {{ form.from_airport.label }} </label>
+    <div class="control has-icons-right">
+      {{ form.from_airport(class="input") }}
+    </div>
+  </div>
+  <!-- to_airport -->
+  <div class="field">
+    <label class="label"> {{ form.to_airport.label }} </label>
+    <div class="control has-icons-right">
+      {{ form.to_airport(class="input") }}
+    </div>
+  </div>
+  <!-- status -->
+  <div class="field">
+    <label class="label"> {{ form.status.label }} </label>
+    <div class="control has-icons-right">{{ form.status(class="input") }}</div>
+  </div>
+  <!-- scheduled_time_of_departure -->
+  <div class="field">
+    <label class="label"> {{ form.scheduled_time_of_departure.label }} </label>
+    <div class="control has-icons-right">
+      {{ form.scheduled_time_of_departure(class="input") }}
+    </div>
+  </div>
+  <!-- scheduled_time_of_arrival -->
+  <div class="field">
+    <label class="label"> {{ form.scheduled_time_of_arrival.label }} </label>
+    <div class="control has-icons-right">
+      {{ form.scheduled_time_of_arrival(class="input") }}
+    </div>
+  </div>
+  <!-- actual_time_of_departure -->
+  <div class="field">
+    <label class="label"> {{ form.actual_time_of_departure.label }} </label>
+    <div class="control has-icons-right">
+      {{ form.actual_time_of_departure(class="input") }}
+    </div>
+  </div>
+  <!-- actual_time_of_arrival -->
+  <div class="field">
+    <label class="label"> {{ form.actual_time_of_arrival.label }} </label>
+    <div class="control has-icons-right">
+      {{ form.actual_time_of_arrival(class="input") }}
+    </div>
+  </div>
+  <button type="submit" class="button is-primary">Save</button>
+</form>
+{% endblock %}

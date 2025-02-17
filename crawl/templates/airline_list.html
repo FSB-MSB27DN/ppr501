@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+<a class="button is-primary is-pulled-right" href="/airline/add"
+  >Add New Airline</a
+>
+<br />
+<br />
+<div class="table-container">
+  <table
+    class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+  >
+    <thead>
+      <tr>
+        <th class="is-info">Id</th>
+        <th class="is-info">Name</th>
+        <th class="is-info">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for airline in airlines %}
+      <tr>
+        <td>{{ airline.airline_id }}</td>
+        <td>
+          <a href="/airline/edit/{{ airline.airline_id }}"
+            >{{ airline.name }}</a
+          >
+        </td>
+        <td>
+          <a
+            class="button is-primary"
+            href="/airline/edit/{{ airline.airline_id }}"
+            >Edit</a
+          >
+          <a
+            class="button is-danger"
+            href="/airline/delete/{{ airline.airline_id }}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

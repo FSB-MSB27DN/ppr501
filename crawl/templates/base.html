@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/5693383936.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>{% block title %}Manage Airlines{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand" style="margin-left: 100px"></div>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="/"> Home </a>
+            <a class="navbar-item" href="/airlines"> Airline </a>
+
+            <a class="navbar-item" href="/aircrafts"> Aircraft </a>
+
+            <a class="navbar-item" href="/flights"> Flight </a>
+
+            <!-- <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link"> More </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item"> About </a>
+                <a class="navbar-item is-selected"> Jobs </a>
+                <a class="navbar-item"> Contact </a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item"> Report an issue </a>
+              </div>
+            </div> -->
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary" href="/logout">
+                  <strong>Log out</strong>
+                </a>
+                <a class="button is-light" href="/login"> Log in </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <section class="section">
+        <div class="container">
+          <h1 class="title">
+            {% block header %} Welcome to Manage Airlines {% endblock %}
+          </h1>
+        </div>
+      </section>
+    </header>
+    <main class="container" style="margin-bottom: 100px; min-height: 350px">
+      {% block content %} {% endblock %}
+    </main>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p><strong>Manage Airlines</strong> by <a href="#">Me</a>.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block content %}
+<a class="button is-primary is-pulled-right" href="/aircraft/add"
+  >Add New Aircraft</a
+>
+<!-- add filter for airline -->
+<form action="/aircrafts" method="get">
+  <input
+    type="text"
+    name="search"
+    class="input"
+    placeholder="Search by Name"
+    style="width: 200px"
+  />
+  <div class="select is-primary">
+    <select name="airline_id">
+      <option value="">All Airlines</option>
+      {% for airline in airlines %}
+      <option value="{{ airline.airline_id }}">{{ airline.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button class="button is-primary">Filter</button>
+</form>
+<br />
+<div class="table-container">
+  <table
+    class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+  >
+    <thead>
+      <tr>
+        <th class="is-info">Id</th>
+        <th class="is-info">Name</th>
+        <th class="is-info">Type</th>
+        <th class="is-info">Airline</th>
+        <th class="is-info">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for aircraft in aircrafts %}
+      <tr>
+        <td>{{ aircraft.aircraft_id }}</td>
+        <td>
+          <a href="/aircraft/edit/{{ aircraft.aircraft_id }}"
+            >{{ aircraft.name }}</a
+          >
+        </td>
+        <td>{{ aircraft.type }}</td>
+        <td>{{ aircraft.airline.name }}</td>
+        <td>
+          <a
+            class="button is-primary"
+            href="/aircraft/edit/{{ aircraft.aircraft_id }}"
+            >Edit</a
+          >
+          <a
+            class="button is-danger"
+            href="/aircraft/delete/{{ aircraft.aircraft_id }}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
